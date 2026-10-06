@@ -1,0 +1,1 @@
+本项目遵循google c++风格指南，参考https://zh-google-styleguide.readthedocs.io/en/latest/google-cpp-styleguide/index.html
