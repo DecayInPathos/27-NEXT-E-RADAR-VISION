@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/hik_camera.dir/src/main.cpp.o -o hik_camera  -Wl,-rpath,/opt/MVS/lib/64 /opt/MVS/lib/64/libMvCameraControl.so 
