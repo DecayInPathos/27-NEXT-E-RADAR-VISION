@@ -13,11 +13,27 @@
  * Copyright (c) 2026 by XAUT NEXT-E/pathos.
  */
 
-#include <cstdio>
-#include "MvCameraControl.h"
+
+
+#include "hik_camera.h"
+#include <iostream>
+#include <sstream>
+#include <string>
+
+#include "../include/hik_camera.h"
 
 int main()
 {
-    std::printf("SDK version: 0x%08X\n", MV_CC_GetSDKVersion());
+    nexte::hik_camera camera;
+    camera.SDK_Init();
+    std::string version = camera.Get_SDK_Version();
+    std::cout << "🟢当前SDK的版本是：" <<version << std::endl;
+    camera.Enumerate_Devices();
+    camera.Create_Camera_Instance(0);
+    camera.Open_Camera();
+    
+    camera.Close_Camera();
+    camera.Destroy_Camera_Instance();
+    camera.SDK_Final();
     return 0;
 }

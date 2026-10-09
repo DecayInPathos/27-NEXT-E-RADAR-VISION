@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named hik_camera_test
+
+# Build rule for target.
+hik_camera_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hik_camera_test
+.PHONY : hik_camera_test
+
+# fast build rule for target.
+hik_camera_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera_test.dir/build.make CMakeFiles/hik_camera_test.dir/build
+.PHONY : hik_camera_test/fast
+
+#=============================================================================
 # Target rules for targets named hik_camera
 
 # Build rule for target.
@@ -129,12 +142,36 @@ hik_camera/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera.dir/build.make CMakeFiles/hik_camera.dir/build
 .PHONY : hik_camera/fast
 
+src/hik_camera.o: src/hik_camera.cpp.o
+.PHONY : src/hik_camera.o
+
+# target to build an object file
+src/hik_camera.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera.dir/build.make CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o
+.PHONY : src/hik_camera.cpp.o
+
+src/hik_camera.i: src/hik_camera.cpp.i
+.PHONY : src/hik_camera.i
+
+# target to preprocess a source file
+src/hik_camera.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera.dir/build.make CMakeFiles/hik_camera.dir/src/hik_camera.cpp.i
+.PHONY : src/hik_camera.cpp.i
+
+src/hik_camera.s: src/hik_camera.cpp.s
+.PHONY : src/hik_camera.s
+
+# target to generate assembly for a file
+src/hik_camera.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera.dir/build.make CMakeFiles/hik_camera.dir/src/hik_camera.cpp.s
+.PHONY : src/hik_camera.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera.dir/build.make CMakeFiles/hik_camera.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera_test.dir/build.make CMakeFiles/hik_camera_test.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -142,7 +179,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera.dir/build.make CMakeFiles/hik_camera.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera_test.dir/build.make CMakeFiles/hik_camera_test.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -150,7 +187,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera.dir/build.make CMakeFiles/hik_camera.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera_test.dir/build.make CMakeFiles/hik_camera_test.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 # Help Target
@@ -162,6 +199,10 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... hik_camera"
+	@echo "... hik_camera_test"
+	@echo "... src/hik_camera.o"
+	@echo "... src/hik_camera.i"
+	@echo "... src/hik_camera.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
