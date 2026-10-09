@@ -1,8 +1,10 @@
-CMakeFiles/hik_camera.dir/src/main.cpp.o: \
+CMakeFiles/hik_camera_test.dir/src/main.cpp.o: \
  /home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/src/main.cpp \
- /usr/include/stdc-predef.h /opt/MVS/include/MvCameraControl.h \
- /opt/MVS/include/MvErrorDefine.h /opt/MVS/include/MvISPErrorDefine.h \
- /opt/MVS/include/CameraParams.h /opt/MVS/include/PixelType.h \
+ /usr/include/stdc-predef.h \
+ /home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/include/hik_camera.h \
+ /opt/MVS/include/MvCameraControl.h /opt/MVS/include/MvErrorDefine.h \
+ /opt/MVS/include/MvISPErrorDefine.h /opt/MVS/include/CameraParams.h \
+ /opt/MVS/include/PixelType.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \

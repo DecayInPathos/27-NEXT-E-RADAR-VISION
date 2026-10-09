@@ -1,3 +1,4 @@
+/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/build/CMakeFiles/hik_camera_test.dir
 /home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/build/CMakeFiles/hik_camera.dir
 /home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/build/CMakeFiles/edit_cache.dir
 /home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/build/CMakeFiles/rebuild_cache.dir

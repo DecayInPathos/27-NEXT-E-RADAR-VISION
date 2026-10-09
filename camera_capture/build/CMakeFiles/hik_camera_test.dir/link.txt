@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/hik_camera_test.dir/src/main.cpp.o -o hik_camera_test  -Wl,-rpath,/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/build:/opt/MVS/lib/64 libhik_camera.so /opt/MVS/lib/64/libMvCameraControl.so 

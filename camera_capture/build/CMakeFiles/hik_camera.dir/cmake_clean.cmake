@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/hik_camera.dir/src/main.cpp.o"
-  "CMakeFiles/hik_camera.dir/src/main.cpp.o.d"
-  "hik_camera"
-  "hik_camera.pdb"
+  "CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o"
+  "CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o.d"
+  "libhik_camera.pdb"
+  "libhik_camera.so"
 )
 
 # Per-language clean rules from dependency scanning.
