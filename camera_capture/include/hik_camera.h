@@ -23,76 +23,98 @@
 namespace nexte {
     class hik_camera {
     private:
-        //SDK版本变量
-        const unsigned int version_sdk = MV_CC_GetSDKVersion();
-        const unsigned int version_sdk_major = (version_sdk >> 24) & 0xFF;
-        const unsigned int version_sdk_minor = (version_sdk >> 16) & 0xFF;
-        const unsigned int version_sdk_revision = (version_sdk >> 8) & 0xFF;
-        const unsigned int version_sdk_build = version_sdk  & 0xFF;
+        // SDK版本变量
+        std::string version_sdk_string_mid;
 
-        //相机枚举的设备信息
+        // 相机枚举的设备信息
         MV_CC_DEVICE_INFO_LIST stDeviceList_mid;
 
-        //设备实例的句柄
+        // 设备实例的句柄
         void* handle_mid;
 
+        // 设备曝光时间，默认38000.0000
+        float exposure_time_mid = 38000.0000;
+
+        // 设备增益，默认0
+        float gain_mid = 0.0000;
+
+        // SDK所需要的缓存区的大小
+        uint64_t sdk_payload_size_mid = 0;
+
+        // sdk内存对齐要求
+        unsigned int sdk_alignment_mid = 0;
+
+        // sdk分配缓存的地址
+        void* sdk_allocate_aligned_buffer_mid = nullptr;
+
+        // 帧率控制目标，默认为150
+        float fps_mid = 150.0000;
+
     public:
-        //获取SDK版本
-        std::string Get_SDK_Version(void);
+        // 获取SDK版本,作为初始化测试
+        void Get_SDK_Version(void);
 
-        //SDK初始化
-        int SDK_Init(void);
+        // SDK初始化
+        void SDK_Init(void);
 
-        //SDK终止化
-        int SDK_Final(void);
+        // SDK终止化
+        void SDK_Final(void);
 
-        //枚举设备
-        MV_CC_DEVICE_INFO_LIST Enumerate_Devices(void);
+        // 枚举设备
+        void  Enumerate_Devices(void);
 
-        //创建相机实例
+        // 创建相机实例
         void Create_Camera_Instance(unsigned int nIndex);
 
-        //销毁相机实例
+        // 销毁相机实例
         void Destroy_Camera_Instance(void);
 
-        //打开相机
+        // 打开相机
         void Open_Camera(void);
 
-        //关闭相机
+        // 关闭相机
         void Close_Camera(void);
 
         // 设置曝光时间，单位：微秒
+        // 学长给我讲都是手动设置，所以只保留手动设置
         void Set_Exposure(float exposure_us);
-
-        // 设置自动曝光模式：Off、Once、Continuous
-        void Set_Auto_Exposure(const std::string& mode);
-
-        // 设置自动曝光时间上下限，单位：微秒
-        void Set_Auto_Exposure_Limits(float min_us, float max_us);
 
         // 设置增益，单位：dB
         void Set_Gain(float gain_db);
 
-        // 设置自动白平衡模式：Off、Once、Continuous
-        void Set_Auto_White_Balance(const std::string& mode);
-
-        // 设置采集区域，单位：像素
-        void Set_ROI(unsigned int width, unsigned int height,
-                    unsigned int offset_x, unsigned int offset_y);
-
         // 设置相机输出的像素格式
-        void Set_Pixel_Format(unsigned int format);
+        void Set_Pixel_Format(void);
 
         // 启用帧率控制并设置目标帧率，单位：帧/秒
         void Set_Frame_Rate(float fps);
 
-        // 设置触发模式：Off、On
-        void Set_Trigger_Mode(const std::string& mode);
+        // 设置连续采集模式：Off、On
+        void Open_AcquisitionMode_Mode(void);
 
-        // 设置触发源，例如 Software、Line0
-        void Set_Trigger_Source(const std::string& source);
+        // 缓冲区获取SDK所需要的缓存区的大小，和内存对齐方式
+        // 将值赋给 sdk_payload_size_mid sdk_alignment_mid
+        void Get_PayloadSize_Alignment(void);
 
-        // 执行一次软件触发
-        void Software_Trigger();
+        // 分配缓冲区缓存地址
+        void Get_AllocAlignedBuffer(void);
+
+        // 释放缓冲区缓存地址
+        void Free_AllocAlignedBuffer(void);
+
+        // 缓冲区注册内存
+        void Register_Buffer(void);
+
+        // 缓冲区内存取消注册
+        void Unregister_Buffer(void);
+
+        // 开始取流
+        void Start_Grabbing(void);
+
+        // 停止取流
+        void Stop_Grabbing(void);
+
+
+
+
     };
 }

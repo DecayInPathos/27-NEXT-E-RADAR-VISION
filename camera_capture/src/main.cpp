@@ -26,12 +26,25 @@ int main()
 {
     nexte::hik_camera camera;
     camera.SDK_Init();
-    std::string version = camera.Get_SDK_Version();
-    std::cout << "🟢当前SDK的版本是：" <<version << std::endl;
+    camera.Get_SDK_Version();
     camera.Enumerate_Devices();
     camera.Create_Camera_Instance(0);
     camera.Open_Camera();
-    
+    camera.Set_Exposure(380.0000);
+    camera.Set_Gain(0);
+    camera.Set_Pixel_Format();
+    camera.Set_Frame_Rate(150.0000);
+    camera.Open_AcquisitionMode_Mode();
+    camera.Get_PayloadSize_Alignment();
+    camera.Get_AllocAlignedBuffer();
+    camera.Register_Buffer();
+    camera.Start_Grabbing();
+
+
+
+     camera.Stop_Grabbing();
+    camera.Unregister_Buffer();
+    camera.Free_AllocAlignedBuffer();
     camera.Close_Camera();
     camera.Destroy_Camera_Instance();
     camera.SDK_Final();
