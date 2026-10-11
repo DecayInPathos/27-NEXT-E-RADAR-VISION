@@ -19,14 +19,19 @@
 
 namespace nexte {
 
-    std::string hik_camera::Get_SDK_Version(void) {
+    void hik_camera::Get_SDK_Version(void) {
+        const unsigned int version_sdk = MV_CC_GetSDKVersion();
+        const unsigned int version_sdk_major = (version_sdk >> 24) & 0xFF;
+        const unsigned int version_sdk_minor = (version_sdk >> 16) & 0xFF;
+        const unsigned int version_sdk_revision = (version_sdk >> 8) & 0xFF;
+        const unsigned int version_sdk_build = version_sdk  & 0xFF;
         std::ostringstream version_sdk_ostringstream;
         version_sdk_ostringstream << version_sdk_major <<"."<< version_sdk_minor <<"."<< version_sdk_revision <<"."<< version_sdk_build;
-        std::string version_sdk_string = version_sdk_ostringstream.str();
-        return version_sdk_string;
+        version_sdk_string_mid = version_sdk_ostringstream.str();
+        std::cout << "🟢当前SDK的版本是：" << version_sdk_string_mid << std::endl;
     }
 
-    int hik_camera::SDK_Init(void) {
+    void hik_camera::SDK_Init(void) {
         int nRet;
         nRet = MV_CC_Initialize();
         if (nRet == MV_OK) {
@@ -36,10 +41,9 @@ namespace nexte {
             std::cout << "🔴SDK失败初始化，状态码是："<< nRet << std::endl;
             std::exit(EXIT_FAILURE);
         }
-        return nRet;
     }
 
-    int hik_camera::SDK_Final(void) {
+    void hik_camera::SDK_Final(void) {
         int nRet;
         nRet = MV_CC_Finalize();
         if (nRet == MV_OK) {
@@ -49,10 +53,9 @@ namespace nexte {
             std::cout << "🔴SDK失败终止,状态码是："<< nRet << std::endl;
             std::exit(EXIT_FAILURE);
         }
-        return nRet;
     }
 
-    MV_CC_DEVICE_INFO_LIST hik_camera::Enumerate_Devices(void) {
+    void hik_camera::Enumerate_Devices(void) {
         int nRet;
         MV_CC_DEVICE_INFO_LIST stDeviceList;
         memset(&stDeviceList, 0, sizeof(MV_CC_DEVICE_INFO_LIST));
@@ -76,11 +79,10 @@ namespace nexte {
 
         }
         else {
-            std::cout << "🔴设备枚举失败,状态码是："<< nRet << std::endl;
+            std::cout << "🔴设备枚举失败，状态码是："<< nRet << std::endl;
             std::exit(EXIT_FAILURE);
         }
         stDeviceList_mid = stDeviceList;
-        return stDeviceList;
     }
 
     void hik_camera::Create_Camera_Instance(unsigned int nIndex) {
@@ -92,7 +94,7 @@ namespace nexte {
             handle_mid = handle;
         }
         else {
-            std::cout << "🔴句柄初始化失败,状态码是：" << nRet << std::endl;
+            std::cout << "🔴句柄初始化失败，状态码是：" << nRet << std::endl;
             std::exit(EXIT_FAILURE);
         }
     }
@@ -106,7 +108,7 @@ namespace nexte {
             handle_mid = handle;
         }
         else {
-            std::cout << "🔴句柄销毁失败,状态码是：" << nRet << std::endl;
+            std::cout << "🔴句柄销毁失败，状态码是：" << nRet << std::endl;
             std::exit(EXIT_FAILURE);
         }
     }
@@ -118,7 +120,7 @@ namespace nexte {
             std::cout << "🟢成功打开相机" << std::endl;
         }
         else {
-            std::cout << "🔴打开相机失败，,状态码是：" << nRet << std::endl;
+            std::cout << "🔴打开相机失败，状态码是：" << nRet << std::endl;
             std::exit(EXIT_FAILURE);
         }
     }
@@ -130,13 +132,179 @@ namespace nexte {
             std::cout << "🟢成功关闭相机" << std::endl;
         }
         else {
-            std::cout << "🔴关闭相机失败，,状态码是：" << nRet << std::endl;
+            std::cout << "🔴关闭相机失败，状态码是：" << nRet << std::endl;
             std::exit(EXIT_FAILURE);
         }
     }
 
-    
+    void hik_camera::Set_Exposure(float exposure_us) {
+        int nRet;
+        unsigned int nValue = 0;
+        nRet = MV_CC_SetEnumValue(handle_mid, "ExposureMode", nValue);
+        if (nRet != MV_OK) {
+            std::cout << "🔴曝光模式设置失败，状态码是：" << nRet << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
+        nRet = MV_CC_SetFloatValue(handle_mid, "ExposureTime", exposure_us);
+        if (nRet == MV_OK) {
+            std::cout << "🟢相机的曝光时间设置为 "<< exposure_us << " 微秒" << std::endl;
+            exposure_time_mid = exposure_us;
+        }
+        else {
+            std::cout << "🔴曝光时间设置失败，状态码是：" << nRet << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
+    }
 
-    
+    void hik_camera::Set_Gain(float gain_db) {
+        int nRet;
+        nRet = MV_CC_SetFloatValue(handle_mid, "Gain", gain_db);
+        if (nRet == MV_OK) {
+            std::cout << "🟢相机增益设置为 "<< gain_db << " db" << std::endl;
+            gain_mid = gain_db;
+        }
+        else {
+            std::cout << "🔴相机增益设置失败，状态码是：" << nRet << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
+    }
+
+    void hik_camera::Set_Pixel_Format() {
+        int nRet;
+        nRet = MV_CC_SetEnumValueByString(handle_mid, "PixelFormat", "BayerGB8");
+        if (nRet == MV_OK) {
+            std::cout << "🟢像素格式成功设置" << std::endl;
+        }
+        else {
+            std::cout << "🔴像素格式失败设置，状态码是：" << nRet << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
+    }
+
+    void hik_camera::Set_Frame_Rate(float fps) {
+        int nRet;
+        nRet = MV_CC_SetBoolValue(handle_mid,"AcquisitionFrameRateEnable",true);
+        if (nRet == MV_OK) {
+            std::cout << "🟢开启了帧率控制" << std::endl;
+        }
+        else {
+            std::cout << "🔴开启帧率控制失败，状态码是：" << nRet << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
+        nRet = MV_CC_SetFloatValue(handle_mid,"AcquisitionFrameRate",fps);
+        if (nRet == MV_OK) {
+            std::cout << "🟢成功设置了帧率 " << fps << std::endl;
+            fps_mid = fps;
+        }
+        else {
+            std::cout << "🔴开启帧率控制失败，状态码是：" << nRet << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
+    }
+
+    void hik_camera::Open_AcquisitionMode_Mode(void) {
+        int nRet;
+        nRet = MV_CC_SetEnumValueByString(handle_mid, "AcquisitionMode", "Continuous");
+        if (nRet == MV_OK) {
+            std::cout << "🟢成功将采集模式设置为连续采集" << std::endl;
+        }
+        else {
+            std::cout << "🔴采集模式设置失败，状态码是：" << nRet << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
+        nRet = MV_CC_SetEnumValueByString(handle_mid, "TriggerMode", "Off");
+        if (nRet == MV_OK) {
+            std::cout << "🟢成功关闭了触发模式" << std::endl;
+        }
+        else {
+            std::cout << "🔴关闭了触发失败，状态码是：" << nRet << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
+    }
+
+    void hik_camera::Get_PayloadSize_Alignment() {
+        int nRet;
+        nRet = MV_CC_GetPayloadSize(handle_mid, &sdk_payload_size_mid, &sdk_alignment_mid);
+        if (nRet == MV_OK) {
+            std::cout << "🟢负载设置成功，负载长度为 "<< sdk_payload_size_mid << " 字节" << std::endl;
+            std::cout << "🟢负载设置成功，对齐方式是 "<< sdk_alignment_mid << " 字节" << std::endl;
+        }
+        else {
+            std::cout << "🔴负载设置失败，状态码是：" << nRet << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
+    }
+
+    void hik_camera::Get_AllocAlignedBuffer() {
+        sdk_allocate_aligned_buffer_mid = MV_CC_AllocAlignedBuffer(sdk_payload_size_mid, sdk_alignment_mid);
+        if (sdk_allocate_aligned_buffer_mid == nullptr) {
+            std::cout << "🔴缓存配置失败" << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
+        else {
+            std::cout << "🟢缓存配置成功，地址为 "<< sdk_allocate_aligned_buffer_mid << std::endl;
+        }
+    }
+
+    void hik_camera::Free_AllocAlignedBuffer() {
+        int nRet;
+        nRet = MV_CC_FreeAlignedBuffer(sdk_allocate_aligned_buffer_mid);
+        if (nRet == MV_OK) {
+            std::cout << "🟢缓冲区释放成功"<< std::endl;
+        }
+        else {
+            std::cout << "🔴缓冲区释放失败，状态码是：" << nRet << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
+    }
+
+    void hik_camera::Register_Buffer() {
+        int nRet;
+        nRet = MV_CC_RegisterBuffer(handle_mid, sdk_allocate_aligned_buffer_mid, sdk_payload_size_mid, nullptr);
+        if (nRet == MV_OK) {
+            std::cout << "🟢缓冲区注册成功"<< std::endl;
+        }
+        else {
+            std::cout << "🔴缓冲区注册失败，状态码是：" << nRet << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
+    }
+
+    void hik_camera::Unregister_Buffer() {
+        int nRet;
+        nRet = MV_CC_UnRegisterBuffer(handle_mid, sdk_allocate_aligned_buffer_mid);
+        if (nRet == MV_OK) {
+            std::cout << "🟢缓冲区内存取消注册成功"<< std::endl;
+        }
+        else {
+            std::cout << "🔴缓冲区内存取消注册失败，状态码是：" << nRet << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
+    }
+
+    void hik_camera::Start_Grabbing() {
+        int nRet;
+        nRet = MV_CC_StartGrabbing(handle_mid);
+        if (nRet == MV_OK) {
+            std::cout << "🟢开始取流成功"<< std::endl;
+        }
+        else {
+            std::cout << "🔴开始取流失败，状态码是：" << nRet << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
+    }
+
+    void hik_camera::Stop_Grabbing() {
+        int nRet;
+        nRet = MV_CC_StopGrabbing(handle_mid);
+        if (nRet == MV_OK) {
+            std::cout << "🟢停止取流成功"<< std::endl;
+        }
+        else {
+            std::cout << "🔴停止取流失败，状态码是：" << nRet << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
+    }
+
 
 }
