@@ -16,10 +16,23 @@
 #include "hik_camera.h"
 #include <cstdlib>
 #include <cstring>
+#include <string>
+#include <cstring>
+#include <sstream>
+#include <opencv2/core.hpp>
 
 namespace nexte {
 
-    void hik_camera::Get_SDK_Version(void) {
+    hik_camera::hik_camera(int devcice_number_):devcice_number(devcice_number_) {
+        SDK_Init();
+        Get_SDK_Version();
+        Enumerate_Devices();
+        Create_Camera_Instance(devcice_number_);
+        Open_Camera();
+    }
+
+
+    void hik_camera::Get_SDK_Version() {
         const unsigned int version_sdk = MV_CC_GetSDKVersion();
         const unsigned int version_sdk_major = (version_sdk >> 24) & 0xFF;
         const unsigned int version_sdk_minor = (version_sdk >> 16) & 0xFF;
@@ -31,7 +44,7 @@ namespace nexte {
         std::cout << "🟢当前SDK的版本是：" << version_sdk_string_mid << std::endl;
     }
 
-    void hik_camera::SDK_Init(void) {
+    void hik_camera::SDK_Init() {
         int nRet;
         nRet = MV_CC_Initialize();
         if (nRet == MV_OK) {
@@ -43,7 +56,7 @@ namespace nexte {
         }
     }
 
-    void hik_camera::SDK_Final(void) {
+    void hik_camera::SDK_Final() {
         int nRet;
         nRet = MV_CC_Finalize();
         if (nRet == MV_OK) {
@@ -55,7 +68,7 @@ namespace nexte {
         }
     }
 
-    void hik_camera::Enumerate_Devices(void) {
+    void hik_camera::Enumerate_Devices() {
         int nRet;
         MV_CC_DEVICE_INFO_LIST stDeviceList;
         memset(&stDeviceList, 0, sizeof(MV_CC_DEVICE_INFO_LIST));
@@ -87,7 +100,7 @@ namespace nexte {
 
     void hik_camera::Create_Camera_Instance(unsigned int nIndex) {
         int nRet;
-        void* handle = NULL;
+        void* handle = nullptr;
         nRet = MV_CC_CreateHandle(&handle, stDeviceList_mid.pDeviceInfo[nIndex]);
         if (nRet == MV_OK) {
             std::cout << "🟢句柄初始化成功，初始化的是第"<< nIndex+1 << "台相机" << std::endl;
@@ -101,7 +114,7 @@ namespace nexte {
 
     void hik_camera::Destroy_Camera_Instance() {
         int nRet;
-        void* handle = NULL;
+        void* handle = nullptr;
         nRet = MV_CC_DestroyHandle(handle_mid);
         if (nRet == MV_OK) {
             std::cout << "🟢句柄销毁成功" << std::endl;
@@ -113,7 +126,7 @@ namespace nexte {
         }
     }
 
-    void hik_camera::Open_Camera(void) {
+    void hik_camera::Open_Camera() {
         int nRet;
         nRet = MV_CC_OpenDevice(handle_mid);
         if (nRet == MV_OK) {
@@ -125,7 +138,7 @@ namespace nexte {
         }
     }
 
-    void hik_camera::Close_Camera(void) {
+    void hik_camera::Close_Camera() {
         int nRet;
         nRet = MV_CC_CloseDevice(handle_mid);
         if (nRet == MV_OK) {
@@ -202,7 +215,7 @@ namespace nexte {
         }
     }
 
-    void hik_camera::Open_AcquisitionMode_Mode(void) {
+    void hik_camera::Open_AcquisitionMode_Mode() {
         int nRet;
         nRet = MV_CC_SetEnumValueByString(handle_mid, "AcquisitionMode", "Continuous");
         if (nRet == MV_OK) {
@@ -282,6 +295,24 @@ namespace nexte {
         }
     }
 
+    void hik_camera::Set_Image_Node_Number() {
+        int nRet;
+        nRet = MV_CC_SetImageNodeNum(handle_mid, image_node_number);;
+        if (nRet == MV_OK) {
+            std::cout << "🟢设置SDK内部节点成功"<< std::endl;
+        }
+        else {
+            std::cout << "🔴设置SDK内部节点失败，状态码是：" << nRet << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
+        nRet = MV_CC_SetGrabStrategy(handle_mid, MV_GrabStrategy_OneByOne );
+        if (nRet != MV_OK) {
+            std::cout << "🔴设置SDK内部节点永远取最新帧失败，状态码是：" << nRet << std::endl;
+        }
+    }
+
+
+
     void hik_camera::Start_Grabbing() {
         int nRet;
         nRet = MV_CC_StartGrabbing(handle_mid);
@@ -292,7 +323,31 @@ namespace nexte {
             std::cout << "🔴开始取流失败，状态码是：" << nRet << std::endl;
             std::exit(EXIT_FAILURE);
         }
+
     }
+
+    //取最新的一帧的回调函数
+    void __stdcall hik_camera::capture_latest_frame(unsigned char* pData,
+                                        MV_FRAME_OUT_INFO_EX* pFrameInfo,
+                                        void* pUser) {
+        std::cout << "🟢停止该帧的本机时间戳为 "<< pFrameInfo->nHostTimeStamp  <<
+            ",该帧的帧号为 "<<  pFrameInfo->nFrameNum <<std::endl;
+
+        cv::Mat this_image(pFrameInfo->nHeight, pFrameInfo->nWidth, CV_8UC1, pData);
+        auto* camera = static_cast<hik_camera*>(pUser);
+        camera -> frame.latest_Image = this_image.clone();
+    }
+
+    void hik_camera::register_image_callback() {
+
+        int nRet = MV_CC_RegisterImageCallBackEx(handle_mid,&capture_latest_frame, this);
+        if (nRet != MV_OK) {
+            std::cerr << "🔴注册回调失败：" << nRet << '\n';
+            std::exit(EXIT_FAILURE);
+        }
+    }
+
+
 
     void hik_camera::Stop_Grabbing() {
         int nRet;
@@ -305,6 +360,16 @@ namespace nexte {
             std::exit(EXIT_FAILURE);
         }
     }
+
+    hik_camera::~hik_camera() {
+        Stop_Grabbing();
+        //camera.Unregister_Buffer();
+        //camera.Free_AllocAlignedBuffer();
+        Close_Camera();
+        Destroy_Camera_Instance();
+        SDK_Final();
+    }
+
 
 
 }
