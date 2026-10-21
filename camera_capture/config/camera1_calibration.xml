@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<opencv_storage>
+
+    <!-- 标定图像尺寸：宽、高 -->
+    <image_width>960</image_width>
+    <image_height>768</image_height>
+
+    <!-- 内参矩阵 K -->
+    <camera_matrix type_id="opencv-matrix">
+        <rows>3</rows>
+        <cols>3</cols>
+        <dt>d</dt>
+        <data>
+            2560.27142180824  0                 660.233918815107
+            0                 2580.61852009257  443.332191350092
+            0                 0                 1
+        </data>
+    </camera_matrix>
+
+    <!-- 畸变系数，顺序：k1 k2 p1 p2 k3 -->
+    <distortion_coefficients type_id="opencv-matrix">
+        <rows>1</rows>
+        <cols>5</cols>
+        <dt>d</dt>
+        <data>
+            -0.0243360192958276  0.921944967944107  0  0  0
+        </data>
+    </distortion_coefficients>
+
+</opencv_storage>
