@@ -41,8 +41,10 @@ int main()
         while (true) {
              nexte::hik_camera::copy_frame copy;
             {
+
                 std::unique_lock<std::mutex> lock(camera0.image_mutex);
-                camera0.frame.image_cv.wait(lock,[&copy]()->bool{return copy.is_processed && copy.is_copy;});
+                camera0.frame.image_cv.wait(lock,[&copy,&camera0]()->bool{return copy.is_processed && copy.is_copy && camera0.frame.new_recover;});
+                 camera0.frame.new_recover = false;
                  copy.is_copy = false;
                  copy.is_processed = false;
                  copy.nhosttimestamp = camera0.frame.nhosttimestamp;
@@ -72,7 +74,7 @@ int main()
             //这里的bgr_image是最终取出且转换为格式的最新一帧
             //start*    图片的处理逻辑
 
-            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+            //std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
 
 

@@ -70,6 +70,7 @@ namespace nexte {
 
         //规定最新一帧的数据结构
         struct latest_frame {
+            bool new_recover = false;
             unsigned int nframenum;
             int64_t nhosttimestamp = 0;
             enum MvGvspPixelType enpixeltype;

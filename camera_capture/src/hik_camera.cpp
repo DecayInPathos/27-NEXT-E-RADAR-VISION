@@ -345,6 +345,7 @@ namespace nexte {
         auto* camera = static_cast<hik_camera*>(puser);
         std::lock_guard<std::mutex> lock(camera->image_mutex);
         //std::cout << "🟢停止该帧的本机时间戳为 " << pframeinfo->nHostTimeStamp <<",该帧的帧号为 " << pframeinfo->nFrameNum << std::endl;
+        camera -> frame.new_recover = true;
         camera -> frame.nhosttimestamp = pframeinfo->nHostTimeStamp;
         camera -> frame.nframenum = pframeinfo->nFrameNum;
         cv::Mat this_image(pframeinfo->nHeight, pframeinfo->nWidth, CV_8UC1, pdata);
