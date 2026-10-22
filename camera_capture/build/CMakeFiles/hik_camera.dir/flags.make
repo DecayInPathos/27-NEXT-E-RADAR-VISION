@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -Dhik_camera_EXPORTS
 
-CXX_INCLUDES = -I/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/include -I/opt/MVS/include
+CXX_INCLUDES = -I/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/include -I/opt/MVS/include -isystem /usr/include/opencv4
 
 CXX_FLAGS = -fPIC
 
