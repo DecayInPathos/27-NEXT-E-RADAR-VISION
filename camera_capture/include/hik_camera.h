@@ -18,16 +18,24 @@
 #include "MvCameraControl.h"
 #include <string>
 #include <iostream>
+#include <mutex>
 #include <opencv2/opencv.hpp>
+#include <condition_variable>
 
 namespace nexte {
     class hik_camera {
+
     public:
+
         // 设备实例的句柄
         void* handle_mid;
 
+        //拷贝图片时候的那把锁
+        std::mutex image_mutex;
+
     
     private:
+
         //设备编号，启动哪一台相机,从0开始
         int devcice_number = 0;
 
@@ -35,12 +43,12 @@ namespace nexte {
         std::string version_sdk_string_mid;
 
         // 相机枚举的设备信息
-        MV_CC_DEVICE_INFO_LIST stDeviceList_mid;
+        MV_CC_DEVICE_INFO_LIST stdevicelist_mid;
 
 
 
-        // 设备曝光时间，默认38000.0000
-        float exposure_time_mid = 38000.0000;
+        // 设备曝光时间，默认9950.0000
+        float exposure_time_mid = 9950.0000;
 
         // 设备增益，默认0
         float gain_mid = 0.0000;
@@ -55,37 +63,43 @@ namespace nexte {
         void* sdk_allocate_aligned_buffer_mid = nullptr;
 
         // 帧率控制目标，默认为150
-        float fps_mid = 150.0000;
+        float fps_mid = 100.0000;
 
         // 图像节点数量设置为1
         unsigned int image_node_number = 1;
 
         //规定最新一帧的数据结构
         struct latest_frame {
-            int64_t nHostTimeStamp;
-            enum MvGvspPixelType enPixelType;
-            cv::Mat latest_Image;
+            bool is_copy = true;
+            bool is_processed = true;
+            unsigned int nframenum;
+            int64_t nhosttimestamp = 0;
+            enum MvGvspPixelType enpixeltype;
+            cv::Mat latest_image;
+            std::condition_variable image_cv;
         };
 
-        latest_frame frame;
+
 
     public:
+        latest_frame frame;
+
         hik_camera(int devcice_number_);
 
         // 获取SDK版本,作为初始化测试
-        void Get_SDK_Version();
+        void Get_Sdk_Version();
 
         // SDK初始化
-        void SDK_Init();
+        void Sdk_Init();
 
         // SDK终止化
-        void SDK_Final();
+        void Sdk_Final();
 
         // 枚举设备
         void  Enumerate_Devices();
 
         // 创建相机实例
-        void Create_Camera_Instance(unsigned int nIndex);
+        void Create_Camera_Instance(unsigned int nindex);
 
         // 销毁相机实例
         void Destroy_Camera_Instance();
@@ -134,11 +148,11 @@ namespace nexte {
 
 
         //取最新的一帧的回调函数
-        static void __stdcall capture_latest_frame(unsigned char* pData,
-                                            MV_FRAME_OUT_INFO_EX* pFrameInfo,
-                                            void* pUser);
+        static void __stdcall Capture_Latest_Frame(unsigned char* pdata,
+                                            MV_FRAME_OUT_INFO_EX* pframeinfo,
+                                            void* puser);
 
-        void register_image_callback();
+        void Register_Image_Callback();
 
         // 开始取流
         void Start_Grabbing();

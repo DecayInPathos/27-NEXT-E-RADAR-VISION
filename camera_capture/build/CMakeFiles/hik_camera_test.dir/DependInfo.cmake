@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/src/main.cpp" "CMakeFiles/hik_camera_test.dir/src/main.cpp.o" "gcc" "CMakeFiles/hik_camera_test.dir/src/main.cpp.o.d"
+  "/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/src/hik_camera_sample.cpp" "CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.o" "gcc" "CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.o.d"
   )
 
 # Targets to which this target links.

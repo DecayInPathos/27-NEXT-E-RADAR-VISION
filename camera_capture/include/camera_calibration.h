@@ -1,12 +1,22 @@
 #pragma once
 #include <opencv2/opencv.hpp>
-#include <iostream>
-#inlcude <string>
+#include <string>
+
 namespace nexte {
 	class camera_calibration {
 	private:
-		std::string const& camera_calibration_xml_adress;
+		std::string  camera_calibration_xml;
+		cv::Mat K;
+		cv::Mat D;
+		int width = 0;
+		int height = 0;
+		cv::Mat map1, map2;
+
 	public:
-		camera_calibration(std::string const& camera_calibration_matrix_);
+		cv::Mat corrected;
+		
+		camera_calibration(std::string camera_calibration_xml);
+
+		cv::Mat image_corrected(const cv::Mat& raw_image);
 	};
 }

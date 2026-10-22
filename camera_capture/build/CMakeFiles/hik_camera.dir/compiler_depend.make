@@ -189,12 +189,25 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
   /usr/include/c++/11/bits/istream.tcc \
+  /usr/include/c++/11/mutex \
+  /usr/include/c++/11/tuple \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/bits/uses_allocator.h \
+  /usr/include/c++/11/bits/invoke.h \
+  /usr/include/c++/11/chrono \
+  /usr/include/c++/11/ratio \
+  /usr/include/c++/11/limits \
+  /usr/include/c++/11/ctime \
+  /usr/include/c++/11/bits/parse_numbers.h \
+  /usr/include/c++/11/bits/std_mutex.h \
+  /usr/include/c++/11/bits/unique_lock.h \
   /usr/include/opencv4/opencv2/opencv.hpp \
   /usr/include/opencv4/opencv2/opencv_modules.hpp \
   /usr/include/opencv4/opencv2/core.hpp \
   /usr/include/opencv4/opencv2/core/cvdef.h \
   /usr/include/opencv4/opencv2/core/version.hpp \
-  /usr/include/c++/11/limits \
   /usr/include/opencv4/opencv2/core/hal/interface.h \
   /usr/include/c++/11/cstddef \
   /usr/include/opencv4/opencv2/core/cv_cpu_dispatch.h \
@@ -203,9 +216,6 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
   /usr/include/c++/11/stdlib.h \
-  /usr/include/c++/11/array \
-  /usr/include/c++/11/utility \
-  /usr/include/c++/11/bits/stl_relops.h \
   /usr/include/opencv4/opencv2/core/base.hpp \
   /usr/include/c++/11/climits \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h \
@@ -225,9 +235,6 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
   /usr/include/c++/11/bits/uniform_int_dist.h \
   /usr/include/c++/11/pstl/glue_algorithm_defs.h \
   /usr/include/c++/11/functional \
-  /usr/include/c++/11/tuple \
-  /usr/include/c++/11/bits/uses_allocator.h \
-  /usr/include/c++/11/bits/invoke.h \
   /usr/include/c++/11/bits/refwrap.h \
   /usr/include/c++/11/bits/std_function.h \
   /usr/include/c++/11/unordered_map \
@@ -308,13 +315,6 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
   /usr/include/c++/11/sstream \
   /usr/include/c++/11/bits/sstream.tcc \
   /usr/include/opencv4/opencv2/core/utility.hpp \
-  /usr/include/c++/11/mutex \
-  /usr/include/c++/11/chrono \
-  /usr/include/c++/11/ratio \
-  /usr/include/c++/11/ctime \
-  /usr/include/c++/11/bits/parse_numbers.h \
-  /usr/include/c++/11/bits/std_mutex.h \
-  /usr/include/c++/11/bits/unique_lock.h \
   /usr/include/opencv4/opencv2/core/optim.hpp \
   /usr/include/opencv4/opencv2/core/ovx.hpp \
   /usr/include/opencv4/opencv2/core/cvdef.h \
@@ -420,7 +420,11 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
   /usr/include/opencv4/opencv2/stitching/detail/camera.hpp \
   /usr/include/opencv4/opencv2/video.hpp \
   /usr/include/opencv4/opencv2/video/tracking.hpp \
-  /usr/include/opencv4/opencv2/video/background_segm.hpp
+  /usr/include/opencv4/opencv2/video/background_segm.hpp \
+  /usr/include/c++/11/condition_variable \
+  /usr/include/c++/11/thread \
+  /usr/include/c++/11/bits/std_thread.h \
+  /usr/include/c++/11/bits/this_thread_sleep.h
 
 
 /usr/include/opencv4/opencv2/video/background_segm.hpp:
@@ -543,14 +547,6 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 
 /usr/include/opencv4/opencv2/core/optim.hpp:
 
-/usr/include/c++/11/bits/parse_numbers.h:
-
-/usr/include/c++/11/ctime:
-
-/usr/include/c++/11/ratio:
-
-/usr/include/c++/11/mutex:
-
 /usr/include/c++/11/sstream:
 
 /usr/include/opencv4/opencv2/video/tracking.hpp:
@@ -615,10 +611,6 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 
 /usr/include/c++/11/tr1/riemann_zeta.tcc:
 
-/usr/include/c++/11/bits/std_mutex.h:
-
-/usr/include/c++/11/tr1/poly_laguerre.tcc:
-
 /usr/include/c++/11/tr1/poly_hermite.tcc:
 
 /usr/include/c++/11/tr1/modified_bessel_func.tcc:
@@ -640,6 +632,16 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 /usr/include/opencv4/opencv2/flann/saving.h:
 
 /usr/include/x86_64-linux-gnu/bits/iscanonical.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
+/usr/include/opencv4/opencv2/core/utility.hpp:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
+
+/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
+
+/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
 /usr/include/c++/11/bits/string_view.tcc:
 
@@ -666,6 +668,8 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/timer_t.h:
+
+/usr/include/c++/11/mutex:
 
 /usr/include/opencv4/opencv2/stitching/detail/blenders.hpp:
 
@@ -737,6 +741,12 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
 
+/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
+
+/usr/include/c++/11/iostream:
+
+/usr/include/c++/11/bits/node_handle.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
 
 /usr/include/opencv4/opencv2/flann/logger.h:
@@ -803,6 +813,8 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/time64.h:
 
+/usr/include/c++/11/ctime:
+
 /usr/include/c++/11/iosfwd:
 
 /usr/include/c++/11/initializer_list:
@@ -846,10 +858,6 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 /usr/include/c++/11/bits/stl_iterator.h:
 
 /usr/include/opencv4/opencv2/core/hal/interface.h:
-
-/usr/include/c++/11/chrono:
-
-/usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
 ../include/hik_camera.h:
 
@@ -905,6 +913,10 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
 
+/usr/include/c++/11/tr1/poly_laguerre.tcc:
+
+/usr/include/c++/11/bits/std_mutex.h:
+
 /usr/include/c++/11/tr1/legendre_function.tcc:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h:
@@ -925,6 +937,10 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 
 /usr/include/c++/11/bits/invoke.h:
 
+/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
+
+/usr/include/c++/11/bits/postypes.h:
+
 /usr/include/opencv4/opencv2/core/mat.hpp:
 
 /usr/include/c++/11/cstdint:
@@ -942,6 +958,14 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 /usr/include/c++/11/bits/functexcept.h:
 
 /usr/include/c++/11/streambuf:
+
+/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:
+
+/usr/include/c++/11/string_view:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h:
 
@@ -966,6 +990,8 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 /usr/include/c++/11/locale:
 
 /usr/include/ctype.h:
+
+/usr/include/c++/11/bits/std_thread.h:
 
 /usr/include/c++/11/bits/cpp_type_traits.h:
 
@@ -1017,6 +1043,10 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 
 /usr/include/c++/11/cstdio:
 
+/usr/include/x86_64-linux-gnu/bits/wordsize.h:
+
+/usr/include/c++/11/chrono:
+
 /usr/include/stdio.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
@@ -1039,10 +1069,6 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/types/error_t.h:
 
-/usr/include/opencv4/opencv2/core/utility.hpp:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
-
 /usr/include/c++/11/bits/charconv.h:
 
 /usr/include/c++/11/bits/basic_string.tcc:
@@ -1059,17 +1085,9 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 
 /usr/include/c++/11/bits/ios_base.h:
 
-/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
-
 /usr/include/c++/11/bits/locale_classes.h:
 
 /usr/include/c++/11/bits/locale_classes.tcc:
-
-/usr/include/c++/11/iostream:
-
-/usr/include/c++/11/bits/node_handle.h:
-
-/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h:
 
@@ -1103,6 +1121,8 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_inline.h:
 
+/usr/include/c++/11/bits/this_thread_sleep.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
 
 /usr/include/c++/11/bits/locale_facets.tcc:
@@ -1110,6 +1130,42 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 /usr/include/c++/11/istream:
 
 /usr/include/c++/11/bits/istream.tcc:
+
+/usr/include/limits.h:
+
+/usr/include/c++/11/bits/stl_relops.h:
+
+/usr/include/c++/11/debug/debug.h:
+
+/usr/include/features-time64.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h:
+
+/usr/include/c++/11/tr1/beta_function.tcc:
+
+/usr/include/c++/11/array:
+
+/usr/include/c++/11/bits/sstream.tcc:
+
+/usr/include/c++/11/new:
+
+/usr/include/c++/11/climits:
+
+/usr/include/c++/11/thread:
+
+/usr/include/c++/11/condition_variable:
+
+/usr/include/c++/11/ratio:
+
+/usr/include/c++/11/limits:
+
+/usr/include/c++/11/bits/parse_numbers.h:
+
+/usr/include/opencv4/opencv2/core/cvdef.h:
+
+/usr/include/c++/11/bits/uses_allocator.h:
+
+/usr/include/c++/11/bits/unique_lock.h:
 
 /usr/include/opencv4/opencv2/opencv.hpp:
 
@@ -1127,8 +1183,6 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 
 /usr/include/c++/11/bits/stl_bvector.h:
 
-/usr/include/c++/11/limits:
-
 /usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h:
@@ -1140,26 +1194,6 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h:
 
 /usr/include/c++/11/stdlib.h:
-
-/usr/include/c++/11/tr1/beta_function.tcc:
-
-/usr/include/c++/11/array:
-
-/usr/include/c++/11/bits/sstream.tcc:
-
-/usr/include/c++/11/new:
-
-/usr/include/c++/11/climits:
-
-/usr/include/limits.h:
-
-/usr/include/c++/11/bits/stl_relops.h:
-
-/usr/include/c++/11/debug/debug.h:
-
-/usr/include/features-time64.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/syslimits.h:
 
 /usr/include/opencv4/opencv2/core/base.hpp:
 
@@ -1184,12 +1218,6 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 /usr/include/c++/11/bits/std_abs.h:
 
 /usr/include/c++/11/bits/stl_heap.h:
-
-/usr/include/c++/11/bits/unique_lock.h:
-
-/usr/include/opencv4/opencv2/core/cvdef.h:
-
-/usr/include/c++/11/bits/uses_allocator.h:
 
 /usr/include/c++/11/bits/refwrap.h:
 
@@ -1223,10 +1251,6 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 
 /usr/include/opencv4/opencv2/core/cvstd.hpp:
 
-/usr/include/c++/11/bits/postypes.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
-
 /usr/include/opencv4/opencv2/dnn/dict.hpp:
 
 /usr/include/c++/11/bits/streambuf.tcc:
@@ -1238,15 +1262,3 @@ CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o: ../src/hik_camera.cpp \
 /usr/include/c++/11/cstring:
 
 /usr/include/math.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h:
-
-/usr/include/c++/11/string_view:
-
-/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
-
-/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
-
-/usr/include/x86_64-linux-gnu/bits/mathcalls.h:

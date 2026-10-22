@@ -47,4 +47,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/hik_camera_test.dir/DependInfo.cmake"
   "CMakeFiles/hik_camera.dir/DependInfo.cmake"
+  "CMakeFiles/camera_calibration.dir/DependInfo.cmake"
+  "CMakeFiles/camera_calibration_test.dir/DependInfo.cmake"
   )

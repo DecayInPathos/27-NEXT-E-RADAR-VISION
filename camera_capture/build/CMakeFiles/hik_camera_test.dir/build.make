@@ -69,28 +69,28 @@ include CMakeFiles/hik_camera_test.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/hik_camera_test.dir/flags.make
 
-CMakeFiles/hik_camera_test.dir/src/main.cpp.o: CMakeFiles/hik_camera_test.dir/flags.make
-CMakeFiles/hik_camera_test.dir/src/main.cpp.o: ../src/main.cpp
-CMakeFiles/hik_camera_test.dir/src/main.cpp.o: CMakeFiles/hik_camera_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/hik_camera_test.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hik_camera_test.dir/src/main.cpp.o -MF CMakeFiles/hik_camera_test.dir/src/main.cpp.o.d -o CMakeFiles/hik_camera_test.dir/src/main.cpp.o -c /home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/src/main.cpp
+CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.o: CMakeFiles/hik_camera_test.dir/flags.make
+CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.o: ../src/hik_camera_sample.cpp
+CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.o: CMakeFiles/hik_camera_test.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.o -MF CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.o.d -o CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.o -c /home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/src/hik_camera_sample.cpp
 
-CMakeFiles/hik_camera_test.dir/src/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hik_camera_test.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/src/main.cpp > CMakeFiles/hik_camera_test.dir/src/main.cpp.i
+CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/src/hik_camera_sample.cpp > CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.i
 
-CMakeFiles/hik_camera_test.dir/src/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hik_camera_test.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/src/main.cpp -o CMakeFiles/hik_camera_test.dir/src/main.cpp.s
+CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/src/hik_camera_sample.cpp -o CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.s
 
 # Object files for target hik_camera_test
 hik_camera_test_OBJECTS = \
-"CMakeFiles/hik_camera_test.dir/src/main.cpp.o"
+"CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.o"
 
 # External object files for target hik_camera_test
 hik_camera_test_EXTERNAL_OBJECTS =
 
-hik_camera_test: CMakeFiles/hik_camera_test.dir/src/main.cpp.o
+hik_camera_test: CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.o
 hik_camera_test: CMakeFiles/hik_camera_test.dir/build.make
 hik_camera_test: libhik_camera.so
 hik_camera_test: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.4.5.4d
