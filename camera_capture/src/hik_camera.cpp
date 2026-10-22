@@ -343,18 +343,13 @@ namespace nexte {
                                         MV_FRAME_OUT_INFO_EX* pframeinfo,
                                         void* puser) {
         auto* camera = static_cast<hik_camera*>(puser);
-        std::unique_lock<std::mutex> lock(camera->image_mutex);
-        camera -> frame.image_cv.wait(lock,[camera]()->bool{return camera -> frame.is_copy&&camera -> frame.is_processed;});
-        if (lock.owns_lock()==1) {
-            //std::cout << "🟢停止该帧的本机时间戳为 " << pframeinfo->nHostTimeStamp <<",该帧的帧号为 " << pframeinfo->nFrameNum << std::endl;
-            camera -> frame.nhosttimestamp = pframeinfo->nHostTimeStamp;
-            camera -> frame.nframenum = pframeinfo->nFrameNum;
-            camera -> frame.is_copy = false;
-            camera -> frame.is_processed = false;
-            cv::Mat this_image(pframeinfo->nHeight, pframeinfo->nWidth, CV_8UC1, pdata);
-            camera -> frame.latest_image = this_image.clone();
-
-        }
+        std::lock_guard<std::mutex> lock(camera->image_mutex);
+        //std::cout << "🟢停止该帧的本机时间戳为 " << pframeinfo->nHostTimeStamp <<",该帧的帧号为 " << pframeinfo->nFrameNum << std::endl;
+        camera -> frame.nhosttimestamp = pframeinfo->nHostTimeStamp;
+        camera -> frame.nframenum = pframeinfo->nFrameNum;
+        cv::Mat this_image(pframeinfo->nHeight, pframeinfo->nWidth, CV_8UC1, pdata);
+        camera -> frame.latest_image = this_image.clone();
+        camera -> frame.image_cv.notify_one();
     }
 
     void hik_camera::Register_Image_Callback() {

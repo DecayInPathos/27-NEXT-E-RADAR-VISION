@@ -39,15 +39,20 @@ int main()
     {
         nexte::hik_camera camera0(0);
         while (true) {
-            cv::Mat image;
+             nexte::hik_camera::copy_frame copy;
             {
-                std::lock_guard<std::mutex> lock(camera0.image_mutex);
-                if (!camera0.frame.latest_image.empty() && camera0.frame.is_copy==false) {
-                    image = camera0.frame.latest_image.clone();
-                    camera0.frame.is_copy = true;
-                    std::cout << "🟢停止该帧的本机时间戳为 " << camera0.frame.nhosttimestamp <<",该帧的帧号为 " << camera0.frame.nframenum << std::endl;
-                }
-                camera0.frame.image_cv.notify_one();
+                std::unique_lock<std::mutex> lock(camera0.image_mutex);
+                camera0.frame.image_cv.wait(lock,[&copy]()->bool{return copy.is_processed && copy.is_copy;});
+                 copy.is_copy = false;
+                 copy.is_processed = false;
+                 copy.nhosttimestamp = camera0.frame.nhosttimestamp;
+                 copy.nframenum = camera0.frame.nframenum;
+                 copy.image = camera0.frame.latest_image.clone();
+                 std::cout << "🟢停止该帧的本机时间戳为 " << copy.nhosttimestamp <<",该帧的帧号为 " << copy.nframenum << std::endl;
+                 copy.is_copy = true;
+
+
+
                 //start*    图片的处理逻辑
 
 
@@ -57,9 +62,9 @@ int main()
                 //begin*    图片的处理逻辑
             }
 
-            if (!image.empty()) {
+            if (!copy.image.empty()) {
                 cv::Mat bgr_image;
-                cv::cvtColor(image, bgr_image, cv::COLOR_BayerGR2BGR);
+                cv::cvtColor(copy.image, bgr_image, cv::COLOR_BayerGR2BGR);
                 //这个打印的过程7ms左右，如果不是平时测试最好不要开启
                 cv::imshow("Camera", bgr_image);
             }
@@ -72,8 +77,7 @@ int main()
 
 
             //begin*    图片的处理逻辑
-            camera0.frame.is_processed = true;
-            camera0.frame.image_cv.notify_one();
+            copy.is_processed = true;
             const int key = cv::waitKey(1);
             if (key == 'q' || key == 27) break;
         }

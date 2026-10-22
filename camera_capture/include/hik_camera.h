@@ -70,8 +70,6 @@ namespace nexte {
 
         //规定最新一帧的数据结构
         struct latest_frame {
-            bool is_copy = true;
-            bool is_processed = true;
             unsigned int nframenum;
             int64_t nhosttimestamp = 0;
             enum MvGvspPixelType enpixeltype;
@@ -80,8 +78,21 @@ namespace nexte {
         };
 
 
-
     public:
+
+
+        struct copy_frame {
+            bool is_copy = true;
+            bool is_processed=true;
+            unsigned int nframenum;
+            int64_t nhosttimestamp = 0;
+            enum MvGvspPixelType enpixeltype;
+            cv::Mat image;
+            std::condition_variable image_cv;
+        };
+
+
+
         latest_frame frame;
 
         hik_camera(int devcice_number_);
