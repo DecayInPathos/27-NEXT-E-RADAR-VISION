@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/hik_camera_test.dir/src/main.cpp.o"
-  "CMakeFiles/hik_camera_test.dir/src/main.cpp.o.d"
+  "CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.o"
+  "CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.o.d"
   "hik_camera_test"
   "hik_camera_test.pdb"
 )

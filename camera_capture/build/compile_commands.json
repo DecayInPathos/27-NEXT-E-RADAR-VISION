@@ -1,0 +1,22 @@
+[
+{
+  "directory": "/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/build",
+  "command": "/usr/bin/c++ -Dhik_camera_EXPORTS -I/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/include -I/opt/MVS/include -isystem /usr/include/opencv4 -fPIC -o CMakeFiles/hik_camera.dir/src/hik_camera.cpp.o -c /home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/src/hik_camera.cpp",
+  "file": "/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/src/hik_camera.cpp"
+},
+{
+  "directory": "/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/build",
+  "command": "/usr/bin/c++  -I/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/include -I/opt/MVS/include -isystem /usr/include/opencv4  -o CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.o -c /home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/src/hik_camera_sample.cpp",
+  "file": "/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/src/hik_camera_sample.cpp"
+},
+{
+  "directory": "/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/build",
+  "command": "/usr/bin/c++ -Dcamera_calibration_EXPORTS -I/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/include -isystem /usr/include/opencv4 -fPIC -o CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.o -c /home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/src/camera_calibration.cpp",
+  "file": "/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/src/camera_calibration.cpp"
+},
+{
+  "directory": "/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/build",
+  "command": "/usr/bin/c++  -I/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/include -I/opt/MVS/include -isystem /usr/include/opencv4  -o CMakeFiles/camera_calibration_test.dir/src/camera_calibration_sample.cpp.o -c /home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/src/camera_calibration_sample.cpp",
+  "file": "/home/pathos/27-NEXT-E-RADAR-VISION/camera_capture/src/camera_calibration_sample.cpp"
+}
+]

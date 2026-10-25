@@ -142,6 +142,80 @@ hik_camera/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera.dir/build.make CMakeFiles/hik_camera.dir/build
 .PHONY : hik_camera/fast
 
+#=============================================================================
+# Target rules for targets named camera_calibration
+
+# Build rule for target.
+camera_calibration: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_calibration
+.PHONY : camera_calibration
+
+# fast build rule for target.
+camera_calibration/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_calibration.dir/build.make CMakeFiles/camera_calibration.dir/build
+.PHONY : camera_calibration/fast
+
+#=============================================================================
+# Target rules for targets named camera_calibration_test
+
+# Build rule for target.
+camera_calibration_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 camera_calibration_test
+.PHONY : camera_calibration_test
+
+# fast build rule for target.
+camera_calibration_test/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_calibration_test.dir/build.make CMakeFiles/camera_calibration_test.dir/build
+.PHONY : camera_calibration_test/fast
+
+src/camera_calibration.o: src/camera_calibration.cpp.o
+.PHONY : src/camera_calibration.o
+
+# target to build an object file
+src/camera_calibration.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_calibration.dir/build.make CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.o
+.PHONY : src/camera_calibration.cpp.o
+
+src/camera_calibration.i: src/camera_calibration.cpp.i
+.PHONY : src/camera_calibration.i
+
+# target to preprocess a source file
+src/camera_calibration.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_calibration.dir/build.make CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.i
+.PHONY : src/camera_calibration.cpp.i
+
+src/camera_calibration.s: src/camera_calibration.cpp.s
+.PHONY : src/camera_calibration.s
+
+# target to generate assembly for a file
+src/camera_calibration.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_calibration.dir/build.make CMakeFiles/camera_calibration.dir/src/camera_calibration.cpp.s
+.PHONY : src/camera_calibration.cpp.s
+
+src/camera_calibration_sample.o: src/camera_calibration_sample.cpp.o
+.PHONY : src/camera_calibration_sample.o
+
+# target to build an object file
+src/camera_calibration_sample.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_calibration_test.dir/build.make CMakeFiles/camera_calibration_test.dir/src/camera_calibration_sample.cpp.o
+.PHONY : src/camera_calibration_sample.cpp.o
+
+src/camera_calibration_sample.i: src/camera_calibration_sample.cpp.i
+.PHONY : src/camera_calibration_sample.i
+
+# target to preprocess a source file
+src/camera_calibration_sample.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_calibration_test.dir/build.make CMakeFiles/camera_calibration_test.dir/src/camera_calibration_sample.cpp.i
+.PHONY : src/camera_calibration_sample.cpp.i
+
+src/camera_calibration_sample.s: src/camera_calibration_sample.cpp.s
+.PHONY : src/camera_calibration_sample.s
+
+# target to generate assembly for a file
+src/camera_calibration_sample.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/camera_calibration_test.dir/build.make CMakeFiles/camera_calibration_test.dir/src/camera_calibration_sample.cpp.s
+.PHONY : src/camera_calibration_sample.cpp.s
+
 src/hik_camera.o: src/hik_camera.cpp.o
 .PHONY : src/hik_camera.o
 
@@ -166,29 +240,29 @@ src/hik_camera.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera.dir/build.make CMakeFiles/hik_camera.dir/src/hik_camera.cpp.s
 .PHONY : src/hik_camera.cpp.s
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
+src/hik_camera_sample.o: src/hik_camera_sample.cpp.o
+.PHONY : src/hik_camera_sample.o
 
 # target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera_test.dir/build.make CMakeFiles/hik_camera_test.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
+src/hik_camera_sample.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera_test.dir/build.make CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.o
+.PHONY : src/hik_camera_sample.cpp.o
 
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
+src/hik_camera_sample.i: src/hik_camera_sample.cpp.i
+.PHONY : src/hik_camera_sample.i
 
 # target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera_test.dir/build.make CMakeFiles/hik_camera_test.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
+src/hik_camera_sample.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera_test.dir/build.make CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.i
+.PHONY : src/hik_camera_sample.cpp.i
 
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
+src/hik_camera_sample.s: src/hik_camera_sample.cpp.s
+.PHONY : src/hik_camera_sample.s
 
 # target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera_test.dir/build.make CMakeFiles/hik_camera_test.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
+src/hik_camera_sample.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hik_camera_test.dir/build.make CMakeFiles/hik_camera_test.dir/src/hik_camera_sample.cpp.s
+.PHONY : src/hik_camera_sample.cpp.s
 
 # Help Target
 help:
@@ -198,14 +272,22 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... camera_calibration"
+	@echo "... camera_calibration_test"
 	@echo "... hik_camera"
 	@echo "... hik_camera_test"
+	@echo "... src/camera_calibration.o"
+	@echo "... src/camera_calibration.i"
+	@echo "... src/camera_calibration.s"
+	@echo "... src/camera_calibration_sample.o"
+	@echo "... src/camera_calibration_sample.i"
+	@echo "... src/camera_calibration_sample.s"
 	@echo "... src/hik_camera.o"
 	@echo "... src/hik_camera.i"
 	@echo "... src/hik_camera.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
+	@echo "... src/hik_camera_sample.o"
+	@echo "... src/hik_camera_sample.i"
+	@echo "... src/hik_camera_sample.s"
 .PHONY : help
 
 
