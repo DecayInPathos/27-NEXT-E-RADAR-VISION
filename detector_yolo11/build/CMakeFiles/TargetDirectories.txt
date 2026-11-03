@@ -1,2 +1,0 @@
-/home/pathos/27-NEXT-E-RADAR-VISION/detector_yolo11/build/CMakeFiles/edit_cache.dir
-/home/pathos/27-NEXT-E-RADAR-VISION/detector_yolo11/build/CMakeFiles/rebuild_cache.dir
