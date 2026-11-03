@@ -1,0 +1,2 @@
+/usr/bin/ar qc libpreprocess_gpu.a CMakeFiles/preprocess_gpu.dir/src/yolo_detctor.cu.o
+/usr/bin/ranlib libpreprocess_gpu.a
