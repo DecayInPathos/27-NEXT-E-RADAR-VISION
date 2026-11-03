@@ -29,14 +29,14 @@ target_link_libraries(hik_camera_test PRIVATE hik_camera ${OpenCV_LIBS})
 #-----------------------camera_calibration---------------------------
 
 add_library(camera_calibration SHARED)
-target_sources(camera_calibration PRIVATE "${CMAKE_SOURCE_DIR}/src/camera_calibration.cpp")
-target_include_directories(camera_calibration PUBLIC "${CMAKE_SOURCE_DIR}/include"
+target_sources(camera_calibration PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src/camera_calibration.cpp")
+target_include_directories(camera_calibration PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include"
                                                       ${OpenCV_INCLUDE_DIRS})
 target_link_libraries(camera_calibration  PRIVATE  ${OpenCV_LIBS})
 
 add_executable(camera_calibration_test)
-target_sources(camera_calibration_test PRIVATE "${CMAKE_SOURCE_DIR}/src/camera_calibration_sample.cpp")
-target_include_directories(camera_calibration_test PUBLIC "${CMAKE_SOURCE_DIR}/include"
+target_sources(camera_calibration_test PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src/camera_calibration_sample.cpp")
+target_include_directories(camera_calibration_test PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include"
                                                       ${OpenCV_INCLUDE_DIRS}
                                                         "/opt/MVS/include")
 target_link_libraries(camera_calibration_test  PRIVATE  ${OpenCV_LIBS} camera_calibration hik_camera
